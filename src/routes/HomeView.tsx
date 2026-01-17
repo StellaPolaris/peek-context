@@ -192,9 +192,13 @@ export function HomeView() {
   const navigate = useNavigate();
 
   // Selected tool for SplitView
-  const [selectedTool, setSelectedTool] = useState<Tool | null>(null);
-  const [pendingTool, setPendingTool] = useState<Tool | null>(null);
+  const [selectedToolId, setSelectedToolId] = useState<string | null>(null);
+  const [pendingToolId, setPendingToolId] = useState<string | null>(null);
   const [showNavWarning, setShowNavWarning] = useState(false);
+  const selectedTool = useMemo(
+    () => (selectedToolId ? tools.find((tool) => tool.id === selectedToolId) ?? null : null),
+    [tools, selectedToolId]
+  );
 
   useEffect(() => {
     loadSettings();
@@ -206,58 +210,54 @@ export function HomeView() {
 
   // Handle tool selection with dirty check
   const handleToolClick = useCallback((tool: Tool) => {
-    if (selectedTool && dirtyTools.has(selectedTool.id)) {
-      setPendingTool(tool);
+    if (selectedToolId && dirtyTools.has(selectedToolId)) {
+      setPendingToolId(tool.id);
       setShowNavWarning(true);
     } else {
-      setSelectedTool(tool);
+      setSelectedToolId(tool.id);
     }
-  }, [selectedTool, dirtyTools]);
+  }, [selectedToolId, dirtyTools]);
 
   const handleCloseTool = useCallback(() => {
-    if (selectedTool && dirtyTools.has(selectedTool.id)) {
-      setPendingTool(null);
+    if (selectedToolId && dirtyTools.has(selectedToolId)) {
+      setPendingToolId(null);
       setShowNavWarning(true);
     } else {
-      setSelectedTool(null);
+      setSelectedToolId(null);
     }
-  }, [selectedTool, dirtyTools]);
+  }, [selectedToolId, dirtyTools]);
 
   const handleConfirmNavigation = useCallback(() => {
-    if (selectedTool) {
-      discardChanges(selectedTool.id);
+    if (selectedToolId) {
+      discardChanges(selectedToolId);
     }
-    if (pendingTool) {
-      setSelectedTool(pendingTool);
-    } else {
-      setSelectedTool(null);
-    }
+    setSelectedToolId(pendingToolId ?? null);
     setShowNavWarning(false);
-    setPendingTool(null);
-  }, [selectedTool, pendingTool, discardChanges]);
+    setPendingToolId(null);
+  }, [selectedToolId, pendingToolId, discardChanges]);
 
   const handleCancelNavigation = useCallback(() => {
     setShowNavWarning(false);
-    setPendingTool(null);
+    setPendingToolId(null);
   }, []);
 
   const handleContentChange = useCallback((content: string) => {
-    if (selectedTool) {
-      updateToolContent(selectedTool.id, content);
+    if (selectedToolId) {
+      updateToolContent(selectedToolId, content);
     }
-  }, [selectedTool, updateToolContent]);
+  }, [selectedToolId, updateToolContent]);
 
   const handleSave = useCallback(() => {
-    if (selectedTool) {
-      saveTool(selectedTool.id);
+    if (selectedToolId) {
+      saveTool(selectedToolId);
     }
-  }, [selectedTool, saveTool]);
+  }, [selectedToolId, saveTool]);
 
   const handleDiscard = useCallback(() => {
-    if (selectedTool) {
-      discardChanges(selectedTool.id);
+    if (selectedToolId) {
+      discardChanges(selectedToolId);
     }
-  }, [selectedTool, discardChanges]);
+  }, [selectedToolId, discardChanges]);
 
   // Navigate to tools view with type filter
   const handleTypeClick = useCallback((type: ToolType) => {
@@ -295,16 +295,6 @@ export function HomeView() {
     id: 'home-view-panels',
     storage: localStorage,
   });
-
-  // Update selected tool from store when content changes
-  useEffect(() => {
-    if (selectedTool) {
-      const updated = tools.find(t => t.id === selectedTool.id);
-      if (updated && updated.content !== selectedTool.content) {
-        setSelectedTool(updated);
-      }
-    }
-  }, [tools, selectedTool]);
 
   const hasProjects = settings.projectRoots.length > 0;
 

@@ -39,19 +39,21 @@ export function ToolBreadcrumb({ tool }: ToolBreadcrumbProps) {
           </>
         );
       case 'project':
-        const projectName = tool.projectRoot?.split('/').pop() || 'Project';
-        return (
-          <>
-            <FolderGit2 className="w-3 h-3 text-teal-500" />
-            <span>Project: {projectName}</span>
-            {tool.pluginName && (
-              <>
-                <ChevronRight className="w-3 h-3" />
-                <PluginBadge name={tool.pluginName} size="xs" />
-              </>
-            )}
-          </>
-        );
+        {
+          const projectName = tool.projectRoot?.split('/').pop() || 'Project';
+          return (
+            <>
+              <FolderGit2 className="w-3 h-3 text-teal-500" />
+              <span>Project: {projectName}</span>
+              {tool.pluginName && (
+                <>
+                  <ChevronRight className="w-3 h-3" />
+                  <PluginBadge name={tool.pluginName} size="xs" />
+                </>
+              )}
+            </>
+          );
+        }
     }
   };
 

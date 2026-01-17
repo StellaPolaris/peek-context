@@ -23,13 +23,8 @@ interface SplitViewProps {
 }
 
 export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, onClose }: SplitViewProps) {
-  const [localContent, setLocalContent] = useState(tool.content);
   const [showDiscardDialog, setShowDiscardDialog] = useState(false);
   const { viewMode, setViewMode } = useSettingsStore();
-
-  useEffect(() => {
-    setLocalContent(tool.content);
-  }, [tool.id, tool.content]);
 
   // Cmd+S handler
   useEffect(() => {
@@ -47,7 +42,6 @@ export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, o
 
   const handleChange = useCallback(
     (value: string) => {
-      setLocalContent(value);
       if (tool.isEditable) {
         onContentChange(value);
       }
@@ -187,7 +181,7 @@ export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, o
           <Panel defaultSize={50} minSize={25}>
             <div className="h-full border-r border-sand-200 overflow-auto">
               <CodeMirror
-                value={localContent}
+                value={tool.content}
                 height="100%"
                 extensions={[markdown(), frontmatterHighlight, EditorView.lineWrapping]}
                 onChange={handleChange}
@@ -209,7 +203,7 @@ export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, o
             <div className="h-full p-6 overflow-auto bg-white">
               <article className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-code:text-pink-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900">
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>
-                  {localContent}
+                  {tool.content}
                 </ReactMarkdown>
               </article>
             </div>
@@ -218,7 +212,7 @@ export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, o
       ) : viewMode === 'editor' ? (
         <div className="flex-1 overflow-auto">
           <CodeMirror
-            value={localContent}
+            value={tool.content}
             height="100%"
             extensions={[markdown(), frontmatterHighlight, EditorView.lineWrapping]}
             onChange={handleChange}
@@ -235,7 +229,7 @@ export function SplitView({ tool, isDirty, onContentChange, onSave, onDiscard, o
         <div className="flex-1 p-6 overflow-auto bg-white">
           <article className="prose prose-sm max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-code:text-pink-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900">
             <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {localContent}
+              {tool.content}
             </ReactMarkdown>
           </article>
         </div>
