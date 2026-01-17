@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" fill="none">
+  <defs>
+    <linearGradient id="bannerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E07A5F;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C4563A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Warm gradient background -->
+  <rect width="1280" height="320" fill="url(#bannerGrad)" />
+
+  <!-- Playful floating blobs -->
+  <circle cx="1150" cy="80" r="120" fill="#F2A990" opacity="0.3" />
+  <circle cx="1050" cy="260" r="80" fill="#FAF8F5" opacity="0.15" />
+  <circle cx="50" cy="280" r="60" fill="#FAF8F5" opacity="0.1" />
+
+  <!-- POP accent blobs -->
+  <circle cx="1200" cy="180" r="40" fill="#00E5FF" opacity="0.8" />
+  <circle cx="80" cy="60" r="25" fill="#FF2D92" opacity="0.7" />
+  <circle cx="1100" cy="40" r="15" fill="#FF2D92" />
+
+  <!-- Logo mark - blob style -->
+  <g transform="translate(100, 85)">
+    <rect x="0" y="0" width="150" height="150" rx="45" fill="#FAF8F5" opacity="0.95" />
+    <ellipse cx="65" cy="65" rx="35" ry="40" fill="#E07A5F" transform="rotate(-8 65 65)" />
+    <circle cx="105" cy="45" r="22" fill="#00E5FF" />
+    <circle cx="45" cy="110" r="12" fill="#FF2D92" />
+  </g>
+
+  <!-- Product name - BIG and bold -->
+  <text x="290" y="170"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="96"
+        font-weight="900"
+        fill="#FAF8F5">Peek</text>
+
+  <!-- Tagline -->
+  <text x="290" y="220"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, sans-serif"
+        font-size="26"
+        font-weight="500"
+        fill="#FAF8F5"
+        opacity="0.85">Context, visualized</text>
+</svg>

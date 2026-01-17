@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 128 128" fill="none">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E07A5F" />
+      <stop offset="100%" style="stop-color:#C4563A" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="url(#bgGrad3)" />
+
+  <!-- Left peak - medium -->
+  <path d="M5 100 L28 48 L51 100 Z" fill="#FAF8F5" opacity="0.55" />
+
+  <!-- Right peak - medium -->
+  <path d="M77 100 L100 52 L123 100 Z" fill="#FAF8F5" opacity="0.55" />
+
+  <!-- Center peak - tallest -->
+  <path d="M30 100 L64 22 L98 100 Z" fill="#FAF8F5" />
+
+  <!-- Snow cap center -->
+  <path d="M51 50 L64 22 L77 50 Z" fill="white" />
+
+  <!-- POP sun -->
+  <circle cx="108" cy="28" r="10" fill="#00E5FF" />
+</svg>

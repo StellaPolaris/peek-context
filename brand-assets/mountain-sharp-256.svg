@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 128 128" fill="none">
+
+  <!-- Background -->
+  <rect x="4" y="4" width="120" height="120" rx="28" fill="#E07A5F" />
+
+  <!-- Single clean mountain with shoulder -->
+  <path d="M15 100 L45 55 L64 24 L83 55 L113 100 Z" fill="#FAF8F5" />
+
+  <!-- Snow cap -->
+  <path d="M54 42 L64 24 L74 42 Z" fill="white" />
+
+  <!-- POP -->
+  <circle cx="102" cy="30" r="9" fill="#00E5FF" />
+</svg>
