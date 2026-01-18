@@ -44,3 +44,4 @@ target/
 
 # Docs
 *.md
+!README.md
