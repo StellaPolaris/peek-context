@@ -91,7 +91,8 @@ main() {
 
   local tmp_dir
   tmp_dir="$(mktemp -d)"
-  trap 'rm -rf "$tmp_dir"' EXIT
+  TMP_DIR="$tmp_dir"
+  trap 'rm -rf "${TMP_DIR:-}"' EXIT
 
   local latest_json="${tmp_dir}/latest.json"
   log "Fetching release metadata..."
