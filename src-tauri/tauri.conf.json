@@ -41,7 +41,7 @@
   },
   "plugins": {
     "updater": {
-      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDJCNDczRTQ1M0Y0RkFGN0IKUldSN3IwOC9SVDVISy9TbjhSSlc3Q2h6VjQ3Q282bVliM0JqU0JVTUV6MGFGeXE5dUVQQTlnU1oK",
+      "pubkey": "ZFc1MGNuVnpkR1ZrSUdOdmJXMWxiblE2SUcxcGJtbHphV2R1SUhCMVlteHBZeUJyWlhrNklEVXhNVUV5TmpRM01rTTFNelZCUlVNS1VsZFVjMWRzVFhOU2VWbGhWV05qVGpoM1YwbGFaWFJvTlV0TllYUktWaTlOVTBGeWFXdDRWVEpTT0dZMGMwRjJNRlZqV0hWeFNFMEs=",
       "endpoints": [
         "https://github.com/StellaPolaris/peek-context/releases/latest/download/latest.json"
       ]
