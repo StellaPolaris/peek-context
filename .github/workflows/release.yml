@@ -15,7 +15,6 @@ jobs:
       matrix:
         target:
           - aarch64-apple-darwin
-          - x86_64-apple-darwin
     steps:
       - name: Checkout
         uses: actions/checkout@v4

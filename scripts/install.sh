@@ -76,11 +76,8 @@ main() {
     arm64|aarch64)
       arch="aarch64"
       ;;
-    x86_64|amd64)
-      arch="x86_64"
-      ;;
     *)
-      fail "Unsupported architecture: ${arch_raw}"
+      fail "Unsupported architecture: ${arch_raw}. Apple Silicon only."
       ;;
   esac
 
