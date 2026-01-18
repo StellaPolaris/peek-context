@@ -34,3 +34,15 @@ npm run tauri:dev
 ```bash
 npm run tauri:build
 ```
+
+## Local Releases
+
+This repo uses local builds for releases (no GitHub Actions builds by default).
+
+```bash
+export TAURI_SIGNING_PRIVATE_KEY=~/.tauri/claude-tools-viewer.key
+export TAURI_SIGNING_PRIVATE_KEY_PASSWORD="your-password"
+npm run release:local -- minor
+```
+
+This script will bump versions, run lint, build signed artifacts, generate checksums, and publish a GitHub Release.
