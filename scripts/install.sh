@@ -3,7 +3,7 @@ set -euo pipefail
 
 REPO="StellaPolaris/peek-context"
 APP_NAME="Claude Tools Viewer"
-INSTALL_DIR="${HOME}/Applications"
+INSTALL_DIR="/Applications"
 
 log() {
   echo "[installer] $*"
@@ -131,8 +131,13 @@ main() {
     fail "Unable to locate .app bundle in archive."
   fi
 
-  mkdir -p "$INSTALL_DIR"
-  local install_path="${INSTALL_DIR}/${APP_NAME}.app"
+  local install_dir="$INSTALL_DIR"
+  if [[ ! -w "$install_dir" ]]; then
+    install_dir="${HOME}/Applications"
+    log "System Applications not writable, installing to ${install_dir} instead."
+  fi
+  mkdir -p "$install_dir"
+  local install_path="${install_dir}/${APP_NAME}.app"
   if [[ -d "$install_path" ]]; then
     log "Replacing existing install at ${install_path}"
     rm -rf "$install_path"
