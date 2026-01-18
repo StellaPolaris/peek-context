@@ -4462,7 +4462,7 @@ checksum = "ab16f14aed21ee8bfd8ec22513f7287cd4a91aa92e44edfe2c17ddd004e92607"
 
 [[package]]
 name = "tool-viewer"
-version = "0.2.2"
+version = "0.3.0"
 dependencies = [
  "dirs 5.0.1",
  "env_logger",
